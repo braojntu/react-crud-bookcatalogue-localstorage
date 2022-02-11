@@ -7,7 +7,6 @@ const BookForm = (props) => {
     return {
       bookname: props.book ? props.book.bookname : "",
       author: props.book ? props.book.author : "",
-      isbncode: props.book ? props.book.isbncode : "",
       price: props.book ? props.book.price : "",
       quantity: props.book ? props.book.quantity : "",
       date: props.book ? props.book.date : "",
@@ -15,12 +14,12 @@ const BookForm = (props) => {
   });
 
   const [errorMsg, setErrorMsg] = useState("");
-  const {bookname, author,isbncode, price, quantity} = book;
+  const {id, bookname, author, price, quantity} = book;
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
 
-    const values = [bookname, author, isbncode, price, quantity];
+    const values = [id, bookname, author, price, quantity];
     let errorMsg = "";
 
     const allFieldsFilled = values.every((field) => {
@@ -32,7 +31,6 @@ const BookForm = (props) => {
       const book = {
         id: uuidv4(),
         bookname,
-        isbncode: uuidv4(),
         author,
         price,
         quantity,
@@ -88,18 +86,6 @@ const BookForm = (props) => {
             value={author}
             placeholder="Enter name of author"
             onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="isbncode">
-          <Form.Label>ISBN Code</Form.Label>
-          <Form.Control
-            className="input-control"
-            type="text"
-            name="isbncode"
-            value={isbncode}
-            placeholder="System Generated"
-            onChange={handleInputChange}
-            disabled={true}
           />
         </Form.Group>
         <Form.Group controlId="price">

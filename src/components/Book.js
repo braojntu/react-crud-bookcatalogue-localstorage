@@ -6,7 +6,6 @@ const Book = ({
   id,
   bookname,
   author,
-  isbncode,
   price,
   quantity,
   date,
@@ -20,7 +19,6 @@ const Book = ({
         <Card.Title className="book-title">{bookname}</Card.Title>
         <div className="book-details">
           <div>Author: {author}</div>
-          <div>ISBN Code: {isbncode}</div>
           <div>Quantity: {quantity} </div>
           <div>Price: {price} </div>
           <div>Date: {new Date(date).toDateString()}</div>
